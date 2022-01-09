@@ -20,6 +20,6 @@ public:
         int l=minDepth(root->left);
         int r=minDepth(root->right);
         
-        return min(l,r)+1;
+        return (l>r? r:l)+1;
     }
 };
