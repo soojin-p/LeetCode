@@ -29,11 +29,11 @@ public:
         {
             TreeNode* tmp = q.front();
              node.push_back(tmp->val);
-            if (tmp->left!=NULL) q.push(tmp->left);
-            if (tmp->right!=NULL) q.push(tmp->right);
-           
-            q.pop();
             
+            if (tmp->left) q.push(tmp->left);
+            if (tmp->right) q.push(tmp->right);
+           
+            q.pop();  
         }
         ans.push_back(node);
     }
