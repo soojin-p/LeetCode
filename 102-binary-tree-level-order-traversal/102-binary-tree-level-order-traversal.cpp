@@ -15,7 +15,7 @@ public:
        
     vector<vector<int>> ans;
         
-    queue< TreeNode*> q;
+    queue<TreeNode*> q;
     q.push(root);
     if(!root)
         return {};
@@ -24,14 +24,13 @@ public:
     {  
         vector<int>node;
         int size = q.size();
+        
         for (int i = 0; i < size; i++)
         {
             TreeNode* tmp = q.front();
              node.push_back(tmp->val);
             if (tmp->left!=NULL) q.push(tmp->left);
             if (tmp->right!=NULL) q.push(tmp->right);
-            
-           // cout<<q.front()->val<<" ";
            
             q.pop();
             
