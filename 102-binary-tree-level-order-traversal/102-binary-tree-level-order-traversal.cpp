@@ -25,7 +25,7 @@ public:
         vector<int>node;
         int size = q.size();
         
-        for (int i = 0; i < size; i++)
+       while(size--)
         {
             TreeNode* tmp = q.front();
              node.push_back(tmp->val);
