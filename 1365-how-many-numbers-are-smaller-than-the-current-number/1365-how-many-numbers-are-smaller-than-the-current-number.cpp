@@ -4,7 +4,7 @@ public:
      vector<int>ans;
 	vector<int>tmp = nums;
 	
-	sort(tmp.begin(), tmp.end());
+	//sort(tmp.begin(), tmp.end());
 	
 	for (int i = 0; i < tmp.size(); i++){
 		int cnt = 0;
