@@ -1,18 +1,18 @@
-//재귀
+// 반복문
 class Solution {
-    public int search(int[] nums, int target) {
-        int index = -1;
-        index = searchTarget(nums, target, 0, nums.length-1);
-        return index;
+ public int search(int[] nums, int target) {
+
+        int left =0;
+        int right = nums.length-1;
+        int mid; 
+
+        while(left <= right){
+            mid = left + (right-left)/2;
+            if (target == nums[mid]) return mid;
+            else if (target < nums[mid]) right =mid-1; 
+            else left = mid+1;
+        }
+        return -1;
     }
 
-    int searchTarget(int[] nums, int target, int left, int right) {
-        if (left > right) {
-            return -1; 
-        }
-        int mid = left+ (right - left) / 2;
-        if (target == nums[mid]) return mid;
-        else if (target < nums[mid]) return searchTarget(nums, target, left, mid - 1);
-        else return searchTarget(nums, target, mid + 1, right);
-    }
 }
