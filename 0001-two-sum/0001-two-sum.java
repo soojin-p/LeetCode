@@ -11,17 +11,16 @@ class Solution {
         int l = 0;
         int r = nums.length - 1;
 
-        for (int i = 0; i < nums.length; i++) {
-            int sum = numsIndex[l][0] + numsIndex[r][0];
+       while(l<r){
+        int sum = numsIndex[l][0] + numsIndex[r][0];
 
-            if (sum == target) {
-                return new int[] { numsIndex[l][1], numsIndex[r][1] };
-            }
-            if (sum > target)
-                r--;
-            if (sum < target)
-                l++;
+        if (sum == target) {
+            return new int[] { numsIndex[l][1], numsIndex[r][1] };
         }
-        return null;
+        if (sum > target)
+            r--;
+        if (sum < target)
+            l++;
     }
-}
+    return null;
+}}
