@@ -4,13 +4,12 @@ import java.io.*;
 class Solution {
     // rooms 배열이 주어짐, 배열의 원소값은 배열에 젒근할 수 있는 인덱스값
     // 모든 방을 방문할 수 있으면 ture, 아니면 false
-    // for 문으로 배열을 순회하면서
-    // 방을 탐색하는 함수 실행
+    // 방을 탐색하는 함수 실행 bfs 또는 dfs로 구현
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {
         boolean[] visited = new boolean[rooms.size()];
 
-        //bfs(rooms, visited);
-        dfs(rooms, visited, 0);
+        bfs(rooms, visited);
+        //dfs(rooms, visited, 0);
 
         for (int i = 0; i < visited.length; i++) {
             if (visited[i] == false)
