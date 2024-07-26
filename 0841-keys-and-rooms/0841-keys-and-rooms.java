@@ -1,27 +1,48 @@
+import java.util.*;
+import java.io.*;
+
 class Solution {
-public boolean canVisitAllRooms(List<List<Integer>> rooms) {
-
+    // rooms 배열이 주어짐, 배열의 원소값은 배열에 젒근할 수 있는 인덱스값
+    // 모든 방을 방문할 수 있으면 ture, 아니면 false
+    // for 문으로 배열을 순회하면서
+    // 방을 탐색하는 함수 실행
+    public boolean canVisitAllRooms(List<List<Integer>> rooms) {
         boolean[] visited = new boolean[rooms.size()];
-        Queue<Integer> queue = new LinkedList<>();
-        queue.offer(0);
-        visited[0] = true;
-        int visitedcnt =1;
 
-        //큐가 비어있지 않는동안:
+        //bfs(rooms, visited);
+        dfs(rooms, visited, 0);
+
+        for (int i = 0; i < visited.length; i++) {
+            if (visited[i] == false)
+                return false;
+        }
+        return true;
+    }
+
+    private void bfs(List<List<Integer>> rooms, boolean[] visited) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(0);
+        visited[0] = true;
+
         while (!queue.isEmpty()) {
-            //큐에서 현재 room 꺼냄
-            int room  = queue.poll();
-            //room에서 얻은 key 개수만큼 반복
-            for(int key:rooms.get(room)){
-                //방문검사
-                if(!visited[key]){
-                    queue.offer(key);
-                    visited[key] = true; // --> 방문 체크를 빼먹어서 시간초과 발생
-                    visitedcnt++;
+            int cur = queue.poll();
+            for (int key : rooms.get(cur)) {
+                if (!visited[key]) {
+                    queue.add(key);
+                    visited[key] = true;
                 }
             }
         }
-        //room을 방문한 횟수와 rooms.size가 같은지 체크:
-        return visitedcnt==rooms.size();
+    }
+
+    private void dfs(List<List<Integer>> rooms, boolean[] visited, int start) {
+        visited[start] = true;
+
+        for (int key : rooms.get(start)) {
+            if (!visited[key]) {
+                visited[key] = true;
+                dfs(rooms, visited, key);
+            }
+        }
     }
 }
